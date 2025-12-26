@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+*.test.js
+coverage
+README.md
+DATA_DRIVE.md
+implementation_plan.md
+task.md
+walkthrough.md
