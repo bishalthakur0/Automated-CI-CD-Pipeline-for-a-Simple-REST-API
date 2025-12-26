@@ -5,10 +5,10 @@ This document tracks the technical state, architecture, and data flow of the Aut
 ## 🏗️ Architecture Diagram
 ```mermaid
 graph TD
-    A[Developer] -->|Git Push| B[GitLab Repository]
-    B -->|Trigger| C[GitLab CI Runner]
+    A[Developer] -->|Git Push| B[GitHub Repository]
+    B -->|Webhook| C[Jenkins Server]
     C -->|Build & Test| D[Docker Image]
-    D -->|Push| E[Container Registry]
+    D -->|Push| E[Docker Hub]
     E -->|Pull| F[AWS EC2 Instance]
     F -->|Run| G[Production API]
     G -->|Health Check| H[Monitoring]
@@ -19,7 +19,7 @@ graph TD
 | :--- | :--- | :--- |
 | **Compute** | AWS EC2 | t2.micro (Linux) |
 | **Runtime** | Docker | Engine v20.x |
-| **Orchestration** | GitLab CI | .gitlab-ci.yml |
+| **Orchestration** | Jenkins | Jenkinsfile |
 | **Network** | Security Groups | Port 80 (HTTP), 22 (SSH) |
 
 ## 📡 API Endpoints Data
@@ -40,7 +40,6 @@ graph TD
 ## 🔐 Environment Variables Required
 | Variable | Description | Source |
 | :--- | :--- | :--- |
-| `DOCKER_USER` | Registry username | GitLab CI Secret |
-| `DOCKER_PASS` | Registry password | GitLab CI Secret |
-| `SERVER_IP` | EC2 Public IP | GitLab CI Secret |
-| `SSH_PRIVATE_KEY` | Key for EC2 access | GitLab CI Secret |
+| `DOCKER_CREDENTIALS_ID` | Jenkins Secret ID for Docker Hub | Jenkins Credentials |
+| `EC2_CREDENTIALS_ID` | Jenkins Secret ID for EC2 SSH | Jenkins Credentials |
+| `SERVER_IP` | EC2 Public IP | Jenkins Environment |

@@ -13,7 +13,7 @@ The goal is to eliminate manual deployments and ensure consistent, reliable appl
 
 ## 🛠️ Tech Stack
 - **Backend**: Node.js / Express
-- **CI/CD**: GitLab CI/CD
+- **CI/CD**: Jenkins
 - **Containerization**: Docker
 - **Cloud**: AWS EC2
 - **Monitoring**: Logs / CloudWatch
@@ -36,7 +36,7 @@ The goal is to eliminate manual deployments and ensure consistent, reliable appl
 ### Prerequisites
 - Node.js installed locally.
 - Docker installed locally.
-- A GitLab account and runner configured.
+- A Jenkins server installed and configured.
 - AWS EC2 instance with Docker installed.
 
 ### Local Development
